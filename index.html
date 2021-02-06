@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор</title>
+    <meta http-equiv="Content-type" content="text/html" charset="utf-8"/>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="all">
+
+        <div class="calc">
+
+            <div class="header_calc">
+                <p id="header_calc_text" class="input">0</p>
+            </div>
+
+            <div class="num">
+            <div>
+                <button class="btn btn_color btn_more" onclick="more()">More</button>
+                <button class="btn btn_color" onclick="insert('%')">&percnt;</button>
+                <button class="btn btn_color">C</button>
+                <button class="btn btn_color">&larr;</button>
+            </div>
+            <div>
+                <button value="7" class="btn" onclick="insert(7)">7</button>
+                <button value="8" class="btn" onclick="insert(8)">8</button>
+                <button value="9" class="btn" onclick="insert(9)">9</button>
+                <button class="btn btn_color" onclick="insert('/')">&divide;</button>
+            </div>
+            <div>
+                <button value="4" class="btn" onclick="insert(4)">4</button>
+                <button value="5" class="btn" onclick="insert(5)">5</button>
+                <button value="6" class="btn" onclick="insert(6)">6</button>
+                <button class="btn btn_color" onclick="insert('*')">&times;</button>
+            </div>
+            <div>
+                <button value="1" class="btn" onclick="insert(1)">1</button>
+                <button value="2" class="btn" onclick="insert(2)">2</button>
+                <button value="3" class="btn" onclick="insert(3)">3</button>
+                <button class="btn btn_color" onclick="insert('-')">&minus;</button>
+            </div>
+            <div>
+                <button value="0" class="btn" onclick="insert(0)">0</button>
+                <button class="btn" onclick="insert('.')">&#8729;</button>
+                <button class="btn btn_color_equals" onclick="calc()">&equals;</button>
+                <button class="btn btn_color" onclick="insert('+')">&plus;</button>
+            </div>
+            <div id="more_cont" class="more">
+                <button class="btn btn_color">tan</button>
+                <button class="btn btn_color">sin</button>
+                <button class="btn btn_color">cos</button>
+                <button class="btn btn_color">&radic;</button>
+            </div>
+
+            </div>
+
+        </div>
+
+        <div class="history">
+
+            <div class="heading_histor"><h1>History</h1></div>
+
+            <div class="text_histor">
+                <p id="p_text_histor"></p>
+            </div>
+
+            <div class="result">
+                <span id="p_title" class="p_result">Result = </span>
+                <span id="p_result" class="p_result"></span>
+
+            </div>
+
+            <div class="reset" > <input type="button" value="Reset"></div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
