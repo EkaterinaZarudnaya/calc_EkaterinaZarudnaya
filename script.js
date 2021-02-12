@@ -26,9 +26,8 @@ function insert(num) {
 
     arr_histor_num.push(num);
 
-    if(isNaN(arr_histor_num[arr_histor_num.length-1])==true /*&& isNaN(arr_histor_num[arr_histor_num.length-2])==true*/){
-        alert("1 if");
-        /*delete arr_histor_num[arr_histor_num.length-2];*/
+    if(isNaN(arr_histor_num[arr_histor_num.length-1])==true && isNaN(arr_histor_num[arr_histor_num.length-2])==true){
+        delete arr_histor_num[arr_histor_num.length-2];
     }
     
     p_histor.innerHTML=arr_histor_num.join('');
@@ -39,17 +38,15 @@ function insert(num) {
         p_result.innerHTML= in_line_res;
     }
 
-    if(isNaN(arr_histor_num[arr_histor_num.length-1])==true /*&& arr_histor_num[arr_histor_num.length-3]=="="*/){
-        alert("2 if");
-        /*arr_histor_num.splice(0,arr_histor_num.length-2);
-        p_histor.innerHTML=in_line_res;*/
+    /*if(isNaN(arr_histor_num[arr_histor_num.length-1])==true && arr_histor_num[arr_histor_num.length-3]=="="){
+        arr_histor_num.splice(0,arr_histor_num.length-2);
+        p_histor.innerHTML=in_line_res;
     }
 
-    if(/*arr_histor_num[arr_histor_num.length-3]=="="&&*/ isNaN(arr_histor_num[arr_histor_num.length-1])==false){
-        alert("3 if");
-        /* arr_histor_num.splice(0,arr_histor_num.length-1);
-        p_histor.innerHTML=arr_histor_num.join('');*/
-    }
+    if(arr_histor_num[arr_histor_num.length-3]=="=" && isNaN(arr_histor_num[arr_histor_num.length-1])==false){
+        arr_histor_num.splice(0,arr_histor_num.length-1);
+        p_histor.innerHTML=arr_histor_num.join('');
+    }*/
     
 }
 
@@ -62,14 +59,20 @@ function calc(){
         arr_histor_num.push("=");
         arr_histor_num.push(value);
         p_header.innerHTML=0;
-
-        let arr = [1,2,3,4,5,6];
-
-        arr.splice(0,arr.length-2);
-
-        alert(arr.join(''));
-
         p_histor.innerHTML=p_histor.innerHTML+"="+value;
 
     }
+}
+
+
+function backspace(){
+    if(arr_histor_num[arr_histor_num.length-1]!=0){
+        arr_histor_num.pop()
+        p_histor.innerHTML=arr_histor_num.join('');
+    }
+
+}
+
+function c(){
+
 }
