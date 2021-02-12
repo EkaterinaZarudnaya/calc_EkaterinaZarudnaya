@@ -148,3 +148,13 @@ body{
     max-height: 0;
     transition: max-height 0.2s ease-out;
 }
+
+#my_hr{
+    border: 0;
+    height: 2px;
+    background: rgb(163, 59, 116);
+    background-image: -webkit-linear-gradient(left, rgb(236, 231, 231), rgb(163, 59, 116), rgb(236, 231, 231));
+    background-image: -moz-linear-gradient(left, rgb(236, 231, 231), rgb(163, 59, 116), rgb(236, 231, 231));
+    background-image: -ms-linear-gradient(left, rgb(236, 231, 231), rgb(163, 59, 116), rgb(236, 231, 231));
+    background-image: -o-linear-gradient(left, rgb(236, 231, 231), rgb(163, 59, 116), rgb(236, 231, 231));
+}
