@@ -11,6 +11,8 @@ function more(){
 }
 
 let arr_histor_num = [];
+let all_history=[];
+
 let p_header=document.getElementById("header_calc_text");
 let p_histor = document.getElementById("p_text_histor");
 let p_result = document.getElementById("p_result");
@@ -22,11 +24,35 @@ let p_histor_plus = document.getElementById("p_text_histor_plus");
 
 function insert(num) {
 
-    if(c_return==true){
-
-
+    if (arr_histor_num.indexOf('=')== -1) {
+        
+        if (isNaN(num)) {
+            p_header.innerHTML=0;
+        }
+        else{
+            p_header.innerHTML=num;
+        }
+    
+        arr_histor_num.push(num);
+        
+    
+        if(isNaN(arr_histor_num[arr_histor_num.length-1])==true && isNaN(arr_histor_num[arr_histor_num.length-2])==true){
+            delete arr_histor_num[arr_histor_num.length-2];
+        }
+        
+        p_histor.innerHTML=all_history.join('')+arr_histor_num.join('');
+    
+        let in_line_res = eval(arr_histor_num.join(''));
+    
+        if (in_line_res) {
+            p_result.innerHTML= in_line_res;
+        }
+        
     }
     else{
+        let index = arr_histor_num.indexOf('=');
+        arr_histor_num = arr_histor_num.slice(index+1);
+        p_histor.innerHTML=arr_histor_num.join('');
 
         if (isNaN(num)) {
             p_header.innerHTML=0;
@@ -36,56 +62,50 @@ function insert(num) {
         }
     
         arr_histor_num.push(num);
+        
     
         if(isNaN(arr_histor_num[arr_histor_num.length-1])==true && isNaN(arr_histor_num[arr_histor_num.length-2])==true){
             delete arr_histor_num[arr_histor_num.length-2];
         }
         
-        p_histor.innerHTML=arr_histor_num.join('');
+        p_histor.innerHTML=all_history.join('')+arr_histor_num.join('');
     
-        let in_line_res = eval(p_histor.innerHTML);
+        let in_line_res = eval(arr_histor_num.join(''));
     
         if (in_line_res) {
             p_result.innerHTML= in_line_res;
         }
 
-    
-        /*if(isNaN(arr_histor_num[arr_histor_num.length-1])==true && arr_histor_num[arr_histor_num.length-3]=="="){
-            arr_histor_num.splice(0,arr_histor_num.length-2);
-            p_histor.innerHTML=in_line_res;
-        }
-    
-        if(arr_histor_num[arr_histor_num.length-3]=="=" && isNaN(arr_histor_num[arr_histor_num.length-1])==false){
-            arr_histor_num.splice(0,arr_histor_num.length-1);
-            p_histor.innerHTML=arr_histor_num.join('');
-        }*/
     }
-
 }
 
 function calc(){
-    if (p_histor) {
+    if (p_histor.innerHTML!="") {
 
         if(arr_histor_num.indexOf('%')!= -1){
+
             let index = arr_histor_num.indexOf('%');
-            let arr_part1 = arr_histor_num.slice(0,index);
-            let arr_part2 = arr_histor_num.slice(index+1);
-            let part1 = arr_part1.join('');
-            let part2 = arr_part2.join('');
+
+            let part1 = arr_histor_num.slice(0,index).join('');
+            let part2 = arr_histor_num.slice(index+1).join('');
 
             let result = part1/100*part2;
+
             arr_histor_num.push("=");
             arr_histor_num.push( result );
+
             p_header.innerHTML=0;
             p_histor.innerHTML=p_histor.innerHTML+"="+ result ;
-
-
+            p_result.innerHTML= result;
         }
         else{
-            let value = eval(p_histor.innerHTML);
+
+            let value = eval(arr_histor_num.join(''));
             p_result.innerHTML= value;
+
             arr_histor_num.push("=");
             arr_histor_num.push(value);
+            
             p_header.innerHTML=0;
             p_histor.innerHTML=p_histor.innerHTML+"="+value;
         }
@@ -98,17 +118,24 @@ function calc(){
 
 
 function backspace(){
-    if(arr_histor_num[arr_histor_num.length-1]!=0){
+    if(arr_histor_num[arr_histor_num.length-1]!=0 && arr_histor_num.indexOf('=')== -1){
         arr_histor_num.pop()
-        p_histor.innerHTML=arr_histor_num.join('');
+        p_histor.innerHTML=all_history.join('') + arr_histor_num.join('');
+        p_header.innerHTML="0";
+        p_result.innerHTML="";
     }
 
 }
 
 function c(){
-    p_histor.innerHTML=arr_histor_num.join('') + "</p> <hr id='my_hr'/> <p id='p_text_histor_plus'>";
+    all_history.push(arr_histor_num.join(''));
+    all_history.push("<hr id='my_hr'/>")
+    arr_histor_num=[];
+
+    p_histor.innerHTML=all_history.join('');
     p_header.innerHTML="0";
     p_result.innerHTML="";
+
     c_return=true;
 }
 
@@ -124,7 +151,8 @@ function tan(){
 
         num = arr_histor_num.join('');
         result = Math.tan(num);
-        p_histor.innerHTML="tan("+num+") = " + result;
+        p_histor.innerHTML=all_history.join('')+"tan("+num+") = " + result;
+        all_history.push("tan("+num+") = " + result);
         p_result.innerHTML=result;
 
     }
@@ -141,7 +169,8 @@ function sin(){
 
         num = arr_histor_num.join('');
         result = Math.sin(num);
-        p_histor.innerHTML="sin("+num+") = " + result;
+        p_histor.innerHTML=all_history.join('')+"sin("+num+") = " + result;
+        all_history.push("sin("+num+") = " + result);
         p_result.innerHTML=result;
     }
     else{
@@ -157,7 +186,8 @@ function cos(){
 
         num = arr_histor_num.join('');
         result = Math.cos(num);
-        p_histor.innerHTML="cos("+num+") = " + result;
+        p_histor.innerHTML=all_history.join('')+"cos("+num+") = " + result;
+        all_history.push("cos("+num+") = " + result);
         p_result.innerHTML=result;
     }
     else{
@@ -170,10 +200,10 @@ function my_sqrt(){
     let result;
 
     if (arr_histor_num.length>0) {
-
         num = arr_histor_num.join('');
         result = Math.sqrt(num);
-        p_histor.innerHTML="&radic;("+num+") = " + result;
+        p_histor.innerHTML=all_history.join('')+"&radic;("+num+") = " + result;
+        all_history.push("&radic;("+num+") = " + result);
         p_result.innerHTML=result;
     }
     else{
