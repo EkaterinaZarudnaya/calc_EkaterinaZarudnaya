@@ -94,7 +94,7 @@ function calc(){
             arr_histor_num.push("=");
             arr_histor_num.push( result );
 
-            p_header.innerHTML=0;
+            p_header.innerHTML=result;
             p_histor.innerHTML=p_histor.innerHTML+"="+ result ;
             p_result.innerHTML= result;
         }
@@ -106,7 +106,7 @@ function calc(){
             arr_histor_num.push("=");
             arr_histor_num.push(value);
             
-            p_header.innerHTML=0;
+            p_header.innerHTML=value;
             p_histor.innerHTML=p_histor.innerHTML+"="+value;
         }
 
