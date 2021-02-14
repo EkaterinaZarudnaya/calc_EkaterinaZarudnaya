@@ -153,6 +153,7 @@ function tan(){
         p_histor.innerHTML=all_history.join('')+"tan("+num+") = " + result;
         all_history.push("tan("+num+") = " + result);
         p_result.innerHTML=result;
+        p_header.innerHTML = result;
         arr_histor_num=[];
     }
     else{
@@ -171,6 +172,7 @@ function sin(){
         p_histor.innerHTML=all_history.join('')+"sin("+num+") = " + result;
         all_history.push("sin("+num+") = " + result);
         p_result.innerHTML=result;
+        p_header.innerHTML = result;
         arr_histor_num=[];
     }
     else{
@@ -189,6 +191,7 @@ function cos(){
         p_histor.innerHTML=all_history.join('')+"cos("+num+") = " + result;
         all_history.push("cos("+num+") = " + result);
         p_result.innerHTML=result;
+        p_header.innerHTML = result;
         arr_histor_num=[];
     }
     else{
@@ -206,6 +209,7 @@ function my_sqrt(){
         p_histor.innerHTML=all_history.join('')+"&radic;("+num+") = " + result;
         all_history.push("&radic;("+num+") = " + result);
         p_result.innerHTML=result;
+        p_header.innerHTML = result;
         arr_histor_num=[];
     }
     else{
